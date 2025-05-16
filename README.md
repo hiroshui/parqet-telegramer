@@ -1,3 +1,5 @@
+This is NOT an official product of Parqet!
+
 # 📈 Parqet Telegramer
 Ein Telegram-Bot, der es ermöglicht, PDF-Dateien direkt an Parqet hochzuladen. Ideal für Nutzer, die ihre Depottransaktionen effizient und automatisiert verwalten möchten.
 
