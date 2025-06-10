@@ -13,7 +13,7 @@ if FILE_PATH == None:
 
 async def upload():
     print("start upload")
-    await upload_pdf(pdf_path=FILE_PATH, parqet_id=PARQET_ID)
+    await upload_pdf(pdf_path=FILE_PATH, parqet_id=PARQET_ID, timeout=30000)
     
 # Start the upload process as asny using asnycio.
 if __name__ == "__main__":

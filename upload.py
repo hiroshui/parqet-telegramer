@@ -1,6 +1,6 @@
 from playwright.async_api import async_playwright
 
-async def upload_pdf(pdf_path, parqet_id):
+async def upload_pdf(pdf_path, parqet_id, timeout_ms):
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="auth.json")  # Use saved login session
@@ -14,7 +14,7 @@ async def upload_pdf(pdf_path, parqet_id):
 
         try:
             #Wait for positive feedback. if there is none -> print message on server/bot
-            await page.wait_for_selector("text=1 Aktivität erfolgreich importiert", timeout=15000)
+            await page.wait_for_selector("text=1 Aktivität erfolgreich importiert", timeout=timeout_ms)
         except Exception as e:
             print(e);
 
