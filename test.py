@@ -10,7 +10,7 @@ with sync_playwright() as p:
 
     browser = p.chromium.launch(headless=True)
     auth_file = Path("auth.json")
-    if auth_file.exists("auth.json"):
+    if auth_file.exists():
         context = browser.new_context(storage_state="auth.json")
 
     page = browser.new_page()
