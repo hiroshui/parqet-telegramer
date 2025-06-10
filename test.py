@@ -8,7 +8,7 @@ with sync_playwright() as p:
         website=os.getenv("WEBSITE")
     
     browser = p.chromium.launch(headless=True)
-    page = browser.new_page(website)
+    page = browser.new_page()
     page.goto(website)
     print(page.content())
     browser.close()
