@@ -8,7 +8,7 @@ load_dotenv()
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 ALLOWED_USER = int(os.getenv("TELEGRAM_USER_ID"))
 PARQET_ID = os.getenv("PARQET_ID")
-TIMEOUT_MS = os.getenv("TIMEOUT_MS")
+TIMEOUT_MS =  int(os.getenv("TIMEOUT_MS"))
 
 async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_user.id != ALLOWED_USER:
