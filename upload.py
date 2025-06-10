@@ -5,9 +5,14 @@ async def upload_pdf(pdf_path, parqet_id, timeout_ms):
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(storage_state="auth.json")  # Use saved login session
         page = await context.new_page()
+        
+        # block pics, fonts etc.
+        await page.route("**/*", lambda route, request: route.abort()
+            if request.resource_type in ["image", "font", "stylesheet"]
+            else route.continue_())
 
         # Navigate to upload page
-        await page.goto(f'https://app.parqet.com/p/{parqet_id}/activities/create?&highlight=files')
+        await page.goto(f'https://app.parqet.com/p/{parqet_id}/activities/create?&highlight=files', timeout=timeout_ms)
 
         # Set the file directly using the id "import-files" of input
         await page.set_input_files("#import-files", pdf_path)
